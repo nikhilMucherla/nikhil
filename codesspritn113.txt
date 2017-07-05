@@ -1,0 +1,42 @@
+#!/bin/python3
+
+import sys
+
+q = int(input().strip())
+n=[]
+t=[0]*q
+# Process each command
+for a0 in range(q):
+    # Read the first string denoting the command type
+    command = input().strip()
+    # Write additional code to read the command's file name(s) and process the command
+    # Print the output string appropriate to the command
+    #print command
+    if command[0]=="c":
+        print ("+ ",end="")
+       
+        if command[4:] in n:
+            print (command[4:],end="")
+            t[n.index(command[4:])]=t[n.index(command[4:])]+1
+            print ("(",end="")
+            print (t[n.index(command[4:])],end="")
+            print (")")
+        else:
+            print (command[4:])
+            n.append(command[4:])
+    elif command[0]=="d":
+        print("- ",end="")
+        print(command[4:])
+        na=command[4:]
+        #print (na)
+        if '(' in na:
+            p=na.index('(')
+            #print(p)
+            t[n.index(command[4:p+4])]=t[n.index(command[4:p+4])]-1
+        else:
+            t[n.index(command[4:])]=t[n.index(command[4:])]-1
+            
+    elif command[0]=="r":
+        print("r ",end="")
+        
+        
